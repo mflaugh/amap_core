@@ -1,6 +1,6 @@
 part of amap_core;
 
-class ReGeocode {
+class AmapGeocode {
   /// 建筑
   final String? building;
 
@@ -26,7 +26,7 @@ class ReGeocode {
   final String? country;
 
   /// 格式化地址
-  final String? formatAddress;
+  final String? formattedAddress;
 
   /// 省/直辖市
   final String? province;
@@ -37,60 +37,69 @@ class ReGeocode {
   /// 门牌信息
   final String? streetNumber;
 
-  /// 兴趣点信息 AMapPOI 数组
-  List<ReGeocode?>? pois = [];
+  final String? level;
 
-  ReGeocode({
+  final LatLng? location;
+
+  final String? postcode;
+
+  AmapGeocode({
     this.adcode,
     this.citycode,
     this.country,
-    this.formatAddress,
+    this.formattedAddress,
     this.province,
     this.towncode,
     this.township,
-    this.pois,
     this.building,
     this.city,
     this.district,
     this.neighborhood,
     this.streetNumber,
+    this.level,
+    this.location,
+    this.postcode,
   });
 
-  factory ReGeocode.fromJson(Map<dynamic, dynamic> json) => _$ReGeocodeFromJson(json);
+  factory AmapGeocode.fromJson(Map<dynamic, dynamic> json) => _$ReGeocodeFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReGeocodeToJson(this);
 }
 
-ReGeocode _$ReGeocodeFromJson(Map<dynamic, dynamic> json) {
-  return ReGeocode(
+AmapGeocode _$ReGeocodeFromJson(Map<dynamic, dynamic> json) {
+  return AmapGeocode(
     adcode: json['adcode'] as String,
     citycode: json['citycode'] as String,
     country: json['country'] as String,
-    formatAddress: json['formatAddress'] as String,
+    formattedAddress: json['formattedAddress'] as String,
     province: json['province'] as String,
     towncode: json['towncode'] as String,
     township: json['township'] as String,
-    pois: (json['pois'] as List).map((e) => e == null ? null : ReGeocode.fromJson(new Map<String, dynamic>.from(e))).toList(),
     building: json['building'] as String,
     city: json['city'] as String,
     district: json['district'] as String,
     neighborhood: json['neighborhood'] as String,
     streetNumber: json['streetNumber'] as String,
+    level: json['level'] as String,
+    location: json['location'] == null ? null : LatLng.fromJson(json['location']),
+    postcode: json['postcode'] as String,
   );
 }
 
-Map<String, dynamic> _$ReGeocodeToJson(ReGeocode instance) => <String, dynamic>{
+Map<String, dynamic> _$ReGeocodeToJson(AmapGeocode instance) => <String, dynamic>{
       'towncode': instance.towncode,
       'township': instance.township,
       'adcode': instance.adcode,
       'citycode': instance.citycode,
       'country': instance.country,
-      'formatAddress': instance.formatAddress,
+      'formattedAddress': instance.formattedAddress,
       'province': instance.province,
-      'pois': instance.pois,
       'building': instance.building,
       'city': instance.city,
       'streetNumber': instance.streetNumber,
       'district': instance.district,
-      'neighborhood': instance.neighborhood
+      'neighborhood': instance.neighborhood,
+      'level': instance.level,
+      'location': instance.location,
+      'postcode': instance.postcode,
     };
