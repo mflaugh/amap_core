@@ -2,10 +2,10 @@ part of amap_core;
 
 class AMapPoi {
   /// POI全局唯一ID
-  final String? poiId;
+  final String? id;
 
   /// 返回POI的名称。
-  final String? title;
+  final String? name;
 
   /// 兴趣点类型
   final String? typeDes;
@@ -29,7 +29,7 @@ class AMapPoi {
   final String? shopID;
 
   /// 邮编
-  final String? postcode;
+  final String? postCode;
 
   /// 网址
   final String? website;
@@ -55,8 +55,8 @@ class AMapPoi {
   /// 区域名称
   final String? direction;
 
-  /// 是否有室内地图
-  final bool? isIndoorMap;
+  /// 室内地图信息
+  final IndoorData? indoorData;
 
   /// 所在商圈
   final String? businessArea;
@@ -67,7 +67,7 @@ class AMapPoi {
   final String? district;
 
   AMapPoi({
-    this.poiId,
+    this.id,
     this.typeDes,
     this.typeCode,
     this.address,
@@ -75,7 +75,7 @@ class AMapPoi {
     this.distance,
     this.parkingType,
     this.shopID,
-    this.postcode,
+    this.postCode,
     this.website,
     this.email,
     this.province,
@@ -84,10 +84,10 @@ class AMapPoi {
     this.cityCode,
     this.adCode,
     this.direction,
-    this.isIndoorMap,
+    this.indoorData,
     this.businessArea,
     this.latLng,
-    this.title,
+    this.name,
     this.district,
   });
 
@@ -98,7 +98,8 @@ class AMapPoi {
 
 AMapPoi _$AMapPoiFromJson(Map<dynamic, dynamic> json) {
   return AMapPoi(
-    poiId: json['poiId'] as String?,
+    id: json['id'] as String?,
+    name: json['name'] as String?,
     typeDes: json['typeDes'] as String?,
     typeCode: json['typeCode'] as String?,
     address: json['address'] as String?,
@@ -106,7 +107,7 @@ AMapPoi _$AMapPoiFromJson(Map<dynamic, dynamic> json) {
     distance: json['distance'] as int?,
     parkingType: json['parkingType'] as String?,
     shopID: json['shopID'] as String?,
-    postcode: json['postcode'] as String?,
+    postCode: json['postCode'] as String?,
     website: json['website'] as String?,
     email: json['email'] as String?,
     province: json['province'] as String?,
@@ -115,16 +116,15 @@ AMapPoi _$AMapPoiFromJson(Map<dynamic, dynamic> json) {
     cityCode: json['cityCode'] as String?,
     adCode: json['adCode'] as String?,
     direction: json['direction'] as String?,
-    isIndoorMap: json['isIndoorMap'] as bool?,
+    indoorData: json['indoorData'] == null ? null : IndoorData.fromJson(Map<String, dynamic>.from(json['indoorData'])),
     businessArea: json['businessArea'] as String?,
     latLng: json['latLng'] == null ? null : LatLng.fromJson(Map<String, dynamic>.from(json['latLng'])),
-    title: json['title'] as String?,
     district: json['district'] as String?,
   );
 }
 
 Map<String, dynamic> _$AMapPoiToJson(AMapPoi instance) => <String, dynamic>{
-      'poiId': instance.poiId,
+      'id': instance.id,
       'typeDes': instance.typeDes,
       'typeCode': instance.typeCode,
       'address': instance.address,
@@ -132,7 +132,7 @@ Map<String, dynamic> _$AMapPoiToJson(AMapPoi instance) => <String, dynamic>{
       'distance': instance.distance,
       'parkingType': instance.parkingType,
       'shopID': instance.shopID,
-      'postcode': instance.postcode,
+      'postCode': instance.postCode,
       'website': instance.website,
       'email': instance.email,
       'province': instance.province,
@@ -141,9 +141,9 @@ Map<String, dynamic> _$AMapPoiToJson(AMapPoi instance) => <String, dynamic>{
       'cityCode': instance.cityCode,
       'adCode': instance.adCode,
       'direction': instance.direction,
-      'isIndoorMap': instance.isIndoorMap,
+      'indoorData': instance.indoorData?.toJson(),
       'businessArea': instance.businessArea,
-      'latLng': instance.latLng,
-      'title': instance.title,
+      'latLng': instance.latLng?.toJson(),
+      'name': instance.name,
       'district': instance.district,
     };
