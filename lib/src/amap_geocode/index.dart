@@ -1,6 +1,6 @@
 part of amap_core;
 
-class AmapGeocode {
+class AMapGeocode {
   /// 建筑
   final String? building;
 
@@ -43,7 +43,7 @@ class AmapGeocode {
 
   final String? postcode;
 
-  AmapGeocode({
+  AMapGeocode({
     this.adcode,
     this.citycode,
     this.country,
@@ -61,13 +61,13 @@ class AmapGeocode {
     this.postcode,
   });
 
-  factory AmapGeocode.fromJson(Map<dynamic, dynamic> json) => _$ReGeocodeFromJson(json);
+  factory AMapGeocode.fromJson(Map<dynamic, dynamic> json) => _$ReGeocodeFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReGeocodeToJson(this);
 }
 
-AmapGeocode _$ReGeocodeFromJson(Map<dynamic, dynamic> json) {
-  return AmapGeocode(
+AMapGeocode _$ReGeocodeFromJson(Map<dynamic, dynamic> json) {
+  return AMapGeocode(
     adcode: json['adcode'] as String,
     citycode: json['citycode'] as String,
     country: json['country'] as String,
@@ -86,7 +86,7 @@ AmapGeocode _$ReGeocodeFromJson(Map<dynamic, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ReGeocodeToJson(AmapGeocode instance) => <String, dynamic>{
+Map<String, dynamic> _$ReGeocodeToJson(AMapGeocode instance) => <String, dynamic>{
       'towncode': instance.towncode,
       'township': instance.township,
       'adcode': instance.adcode,
