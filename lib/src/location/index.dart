@@ -17,6 +17,9 @@ class Location {
   /// 市
   final String? city;
 
+  /// 市区编码
+  final String? cityCode;
+
   /// 区
   final String? district;
 
@@ -32,6 +35,7 @@ class Location {
     this.accuracy,
     this.address,
     this.city,
+    this.cityCode,
     this.country,
     this.district,
     this.street,
@@ -50,6 +54,7 @@ Location _$LocationFromJson(Map<dynamic, dynamic> json) {
     accuracy: (json['accuracy'] as num?)?.toDouble(),
     address: json['address'] as String?,
     city: json['city'] as String?,
+    cityCode: json['cityCode'] as String?,
     country: json['country'] as String?,
     district: json['district'] as String?,
     street: json['street'] as String?,
@@ -63,6 +68,7 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'address': instance.address,
       'country': instance.country,
       'city': instance.city,
+      'cityCode': instance.cityCode,
       'street': instance.street,
       'district': instance.district,
       'accuracy': instance.accuracy,
