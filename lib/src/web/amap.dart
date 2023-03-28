@@ -40,6 +40,7 @@ class GeolocationResultAddressComponent {
   external String country;
   external String province;
   external String city;
+  external String citycode;
   external String district;
   external String street;
 }
