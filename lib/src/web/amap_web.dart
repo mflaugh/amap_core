@@ -54,6 +54,7 @@ class GeolocationResultAddressComponent {
   external String citycode;
   external String district;
   external String street;
+  external String name;
 }
 
 @JS()
