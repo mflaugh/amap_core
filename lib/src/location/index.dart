@@ -24,26 +24,23 @@ class Location {
   final String? district;
 
   /// 街道
-  final String? name;
-
-  /// 街道
   final String? street;
 
   /// 精准度 [在web端直接返回0]
   final double? accuracy;
 
-  Location(
-      {this.latitude,
-      this.longitude,
-      this.accuracy,
-      this.address,
-      this.city,
-      this.cityCode,
-      this.country,
-      this.district,
-      this.street,
-      this.province,
-      this.name});
+  Location({
+    this.latitude,
+    this.longitude,
+    this.accuracy,
+    this.address,
+    this.city,
+    this.cityCode,
+    this.country,
+    this.district,
+    this.street,
+    this.province,
+  });
 
   factory Location.fromJson(Map<dynamic, dynamic> json) => _$LocationFromJson(json);
 
@@ -62,7 +59,6 @@ Location _$LocationFromJson(Map<dynamic, dynamic> json) {
     district: json['district'] as String?,
     street: json['street'] as String?,
     province: json['province'] as String?,
-    name: json['name'] as String?,
   );
 }
 
@@ -74,7 +70,6 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'city': instance.city,
       'cityCode': instance.cityCode,
       'street': instance.street,
-      'name': instance.name,
       'district': instance.district,
       'accuracy': instance.accuracy,
       'province': instance.province,

@@ -6,7 +6,9 @@ import 'package:js/js.dart';
 @JS('Map')
 class AMap {
   external AMap(dynamic div, MapOptions opts);
+
   external plugin(dynamic name, void Function() callback);
+
   external addControl(dynamic name);
 }
 
@@ -14,7 +16,9 @@ class AMap {
 @anonymous
 class MapOptions {
   external LngLat get center;
+
   external set center(LngLat v);
+
   external factory MapOptions({
     LngLat center,
     num zoom,
@@ -34,7 +38,9 @@ class GeoOptions {
 @JS()
 class Geolocation {
   external Geolocation(GeoOptions opts);
+
   external getCurrentPosition(void Function(String status, GeolocationResult result) callback);
+
   external getCityInfo(void Function(String status, dynamic result) callback);
 }
 
@@ -54,7 +60,6 @@ class GeolocationResultAddressComponent {
   external String citycode;
   external String district;
   external String street;
-  external String name;
 }
 
 @JS()
@@ -66,6 +71,8 @@ class GeolocationResultPosition {
 @JS()
 class LngLat {
   external num getLng();
+
   external num getLat();
+
   external LngLat(num lng, num lat);
 }
